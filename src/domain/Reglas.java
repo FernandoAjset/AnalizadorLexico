@@ -46,14 +46,22 @@ public class Reglas {
     }
 
     public static boolean esSimbolo(String test) {
-        Pattern pat = Pattern.compile("[! \" # $ % & ' ( ) * + , \\ -. / : ; < = > ? @ [ ] ^ _ ` { | }]+");
+        Pattern pat = Pattern.compile("[.!.\".#.$.%.&.'.(.).*.+.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]{1}"); //"[! \" # $ % & ' ( ) * + , \\ -. / : ; < = > ? @ [ ] ^ _ ` { | }]?"
         Matcher mat = pat.matcher(test);
         return mat.matches();
     }
 
     public static boolean esEspacio(String test) {
-        Pattern pat = Pattern.compile("[\s\n]+");
+        Pattern pat = Pattern.compile("[\n\s]+");
+        Matcher mat = pat.matcher(test);
+        return mat.matches();
+    }
+
+    public static boolean esComentario(String test) {
+        Pattern pat = Pattern.compile("^([./]{1}[.*]{1})([.*]{1}[./]{1})$");
         Matcher mat = pat.matcher(test);
         return mat.matches();
     }
 }
+/*ASDFASDFSADASDFSAD!**8784641212F1215151*/ 
+//^([./]{1}[.*]{1})([a-zA-Z0-9]*[.!.\".#.$.%.&.'.(.).*.+.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]*)([.*]{1}[./]{1})$
