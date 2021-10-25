@@ -4,6 +4,17 @@
  */
 package presentacion;
 
+import domain.Analizar;
+import static domain.Analizar.identificar;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import presentacion.*;
+
 /**
  *
  * @author briza
@@ -16,6 +27,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
     public InterfazGrafica() {
         initComponents();
     }
+
+//    public void cargar(String cadena) {
+//        DefaultTableModel modelo = (DefaultTableModel) TEjecucion.getModel();
+//        Object[] fila = new Object[2];
+//        String resultado = new String();
+//        
+//        ArrayList <String> parts;
+//
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,8 +50,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Texto = new javax.swing.JTextArea();
-        Analizar = new javax.swing.JButton();
-        Analizar2 = new javax.swing.JButton();
+        BAnalizar = new javax.swing.JButton();
+        BLimpiar = new javax.swing.JButton();
         Resultado = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TEjecucion = new javax.swing.JTable();
@@ -52,26 +72,26 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Texto.setRows(5);
         jScrollPane2.setViewportView(Texto);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 470, 90));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 470, 160));
 
-        Analizar.setText("Analizar");
-        Analizar.addActionListener(new java.awt.event.ActionListener() {
+        BAnalizar.setText("Analizar");
+        BAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnalizarActionPerformed(evt);
+                BAnalizarActionPerformed(evt);
             }
         });
-        getContentPane().add(Analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 80, -1));
+        getContentPane().add(BAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 80, -1));
 
-        Analizar2.setText("Limpiar");
-        Analizar2.addActionListener(new java.awt.event.ActionListener() {
+        BLimpiar.setText("Limpiar");
+        BLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Analizar2ActionPerformed(evt);
+                BLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(Analizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 80, -1));
+        getContentPane().add(BLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 80, -1));
 
         Resultado.setText("Resultados de la ejecucion:");
-        getContentPane().add(Resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        getContentPane().add(Resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         TEjecucion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,18 +103,25 @@ public class InterfazGrafica extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TEjecucion);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 430, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 430, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnalizarActionPerformed
+    private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
+        String recibe = new String();
+        recibe = Texto.getText();
+        String res = new String();
 
-    private void Analizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Analizar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Analizar2ActionPerformed
+        res = Analizar.separar(recibe);
+        System.out.println(res);
+
+    }//GEN-LAST:event_BAnalizarActionPerformed
+
+    private void BLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLimpiarActionPerformed
+        Texto.setText("");
+        
+    }//GEN-LAST:event_BLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,8 +159,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Analizar;
-    private javax.swing.JButton Analizar2;
+    private javax.swing.JButton BAnalizar;
+    private javax.swing.JButton BLimpiar;
     private javax.swing.JLabel Resultado;
     private javax.swing.JTable TEjecucion;
     private javax.swing.JTextArea Texto;
