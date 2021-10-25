@@ -10,7 +10,7 @@ public class Reglas {
         "default", "do", "double", "else", "enum", "extends", "false", "final", "finally", "float", "for",
         "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null",
         "package", "private", "protected", "public", "return", "short", "static", "strictfp", "String", "super", "switch",
-        "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while"};
+        "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while", "main"};
 
     int a;
 
@@ -46,22 +46,45 @@ public class Reglas {
     }
 
     public static boolean esSimbolo(String test) {
-        Pattern pat = Pattern.compile("[.!.\".#.$.%.&.'.(.).*.+.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]{1}"); //"[! \" # $ % & ' ( ) * + , \\ -. / : ; < = > ? @ [ ] ^ _ ` { | }]?"
+        Pattern pat = Pattern.compile("[.!.¡.\".#.$.&.'.(.).,..:.;.<.=.>.?.@\\[\\].^._.`.{.|.}]+"); //+ - / * %
+        //"[.!.\".#.$.%.&.'.(.).*.+\\-.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]{1}"
         Matcher mat = pat.matcher(test);
-        return mat.matches();
+        
+        boolean respuesta = mat.matches();
+        if (respuesta != true) {
+            Pattern pat2 = Pattern.compile("^[\\\\]+$");
+            Matcher mat2 = pat2.matcher(test);
+            respuesta = mat2.matches();
+        }
+        return respuesta;
+        
     }
 
     public static boolean esEspacio(String test) {
-        Pattern pat = Pattern.compile("[\n\s]+");
+        Pattern pat = Pattern.compile("^[\s]+$");
         Matcher mat = pat.matcher(test);
         return mat.matches();
     }
 
     public static boolean esComentario(String test) {
-        Pattern pat = Pattern.compile("^([./]{1}[.*]{1})([.*]{1}[./]{1})$");
+        Pattern pat = Pattern.compile("^([./]{1}[.*]{1})([\\-a-zA-Z0-9.!.\".#.$.%.&.'.(.).*.+-.,/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}\s]*)([.*]{1}[./]{1})$");
         Matcher mat = pat.matcher(test);
+        boolean respuesta = mat.matches();
+        if (respuesta != true) {
+            Pattern pat2 = Pattern.compile("^([./]{2})[[\s]*[a-zA-Z0-9.!.\".#.$.%.&.'.(.).*.+\\-.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]*[\s]*]*$");
+            Matcher mat2 = pat2.matcher(test);
+            respuesta = mat2.matches();
+        }
+        return respuesta;
+    }
+    
+    public static boolean esOperadorAritmetico(String test){
+        Pattern pat = Pattern.compile("^([+-/*/]{1})$");
+        Matcher mat=pat.matcher(test);
         return mat.matches();
     }
 }
-/*ASDFASDFSADASDFSAD!**8784641212F1215151*/ 
+/*ASDFASDFSADASDFSAD!**8784641212F1215151*/
 //^([./]{1}[.*]{1})([a-zA-Z0-9]*[.!.\".#.$.%.&.'.(.).*.+.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]*)([.*]{1}[./]{1})$
+/*ASDF1515!!"@+SADF145*!3@?-*/
+ /*ASDF1515!!"@+SADF145*!3@?-AS-5*/
