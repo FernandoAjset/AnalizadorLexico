@@ -1,0 +1,4 @@
+        while (st.hasMoreTokens()) {
+            String imprimir = identificar(st.nextToken());
+                System.out.println(imprimir);
+        }

@@ -1,0 +1,4 @@
+        if (Reglas.esEspacio(parte)) {
+            respuesta = null;
+            return respuesta;
+        }
