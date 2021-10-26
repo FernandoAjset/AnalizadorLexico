@@ -6,19 +6,8 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.JTable;
 
-public class Analizar {
 
-    public static void separarConToken(String cadena) {
-        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,", true);
-        String resultado = new String();
-        while (st.hasMoreTokens()) {
-            String imprimir = identificar(st.nextToken());
-            if (imprimir != null) {
-                System.out.println(imprimir);
-            }
-        }
-        System.out.println("\n\n");
-    }
+public class Analizar {
 
     public static String separar(String cadena) {
         StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,", true);
@@ -40,19 +29,19 @@ public class Analizar {
         var respuesta = new String();
 
         if (Reglas.esReservada(parte)) {
-            respuesta = parte + " -->Palabra Reservada";
+            respuesta = parte + "   -->Palabra Reservada";
             return respuesta;
         }
         if (Reglas.esVariable(parte)) {
-            respuesta = parte + " --> Palabra/Variable";
+            respuesta = parte + "   --> Palabra/Variable";
             return respuesta;
         }
         if (Reglas.esMetodo(parte)) {
-            respuesta = parte + " --> Metodo";
+            respuesta = parte + "   --> Metodo";
             return respuesta;
         }
         if (Reglas.esNumero(parte)) {
-            respuesta = parte + " --> Numero";
+            respuesta = parte + "   --> Numero";
             return respuesta;
         }
         if (Reglas.esEspacio(parte)) {
@@ -61,14 +50,14 @@ public class Analizar {
         }
 
         if (Reglas.esSimbolo(parte)) {
-            respuesta = parte + " --> Caracter especial";
+            respuesta = parte + "   --> Caracter especial";
             return respuesta;
         }
         if (Reglas.esOperadorAritmetico(parte)) {
-            respuesta = parte + " --> Operador Aritmético";
+            respuesta = parte + "   --> Operador Aritmético";
             return respuesta;
         } else {
-            respuesta = parte + " --> No es valido";
+            respuesta = parte + "   --> No es valido";
             return respuesta;
         }
     }
@@ -98,10 +87,9 @@ public class Analizar {
                 + "        System.out.println(titulo+\" fue escrito por \" + autor);\n"
                 + "    }\n"
                 + "}";
-        res=separar(test);
+        res = separar(test);
         System.out.println(res);
-        
-        
+
 //        test = "package test;\n"
 //                + "\n"
 //                + "import domain.Persona;\n"
@@ -123,6 +111,5 @@ public class Analizar {
 //                + "    }\n"
 //                + "}";
 //        separarConToken(test);
-
     }
 }

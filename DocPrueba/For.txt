@@ -1,0 +1,8 @@
+    public static boolean esReservada(String test) {
+        for (String recorre : reservadas) {
+            if (recorre.equals(test)) {
+                return true;
+            }
+        }
+        return false;
+    }
