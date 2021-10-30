@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import presentacion.*;
 
@@ -36,7 +38,6 @@ public class InterfazOP2 extends javax.swing.JFrame {
 //        ArrayList <String> parts;
 //
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +59,9 @@ public class InterfazOP2 extends javax.swing.JFrame {
         img = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        about = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -112,22 +116,42 @@ public class InterfazOP2 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 560));
 
+        jMenu2.setText("Acerca de");
+
+        about.setText("Autores");
+        about.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutActionPerformed(evt);
+            }
+        });
+        jMenu2.add(about);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
-       String Ing=Texto.getText();
-       String Res=Analizar.separar(Ing);
-       
-       Respuesta.setText(Res);
+        String Ing = Texto.getText();
+        String Res = Analizar.separar(Ing);
+
+        Respuesta.setText(Res);
 
     }//GEN-LAST:event_BAnalizarActionPerformed
 
     private void BLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLimpiarActionPerformed
         Texto.setText("");
         Respuesta.setText("");
-        
+
     }//GEN-LAST:event_BLimpiarActionPerformed
+
+    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
+        About nF = new About();
+        nF.setVisible(true);
+    }//GEN-LAST:event_aboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,9 +196,12 @@ public class InterfazOP2 extends javax.swing.JFrame {
     private javax.swing.JLabel Resultado;
     private javax.swing.JTextArea Texto;
     private javax.swing.JLabel TituloP;
+    private javax.swing.JMenuItem about;
     private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

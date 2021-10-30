@@ -10,7 +10,7 @@ import javax.swing.JTable;
 public class Analizar {
 
     public static String separar(String cadena) {
-        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,", true);
+        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,|<|>", true);
         String resultado = new String();
         while (st.hasMoreTokens()) {
             String imprimir = identificar(st.nextToken());
