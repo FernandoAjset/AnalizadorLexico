@@ -2,6 +2,7 @@
 package presentacion;
 
 import domain.Analizar;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -91,7 +92,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaResultados);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 317, 480, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 317, 510, 230));
 
         Respuesta.setColumns(20);
         Respuesta.setForeground(new java.awt.Color(0, 0, 205));
@@ -129,9 +130,14 @@ public class InterfazOP2 extends javax.swing.JFrame {
 
     private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
         String Ing = Texto.getText();
+        if(Ing.equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Ingrese texto para analizar","Aviso", HEIGHT);
+        }
+        else{
         DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
         modelo.setRowCount(0);
         Analizar.separar(Ing,modelo);
+        }
     }//GEN-LAST:event_BAnalizarActionPerformed
 
     private void BLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLimpiarActionPerformed
