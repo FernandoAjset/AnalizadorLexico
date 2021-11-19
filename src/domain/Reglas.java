@@ -1,4 +1,5 @@
 package domain;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,7 +10,7 @@ public class Reglas {
         "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null",
         "package", "private", "protected", "public", "return", "short", "static", "strictfp", "String", "super", "switch",
         "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while", "main"};
-    
+
     public static boolean esReservada(String test) {
         for (String recorre : reservadas) {
             if (recorre.equals(test)) {
@@ -38,9 +39,9 @@ public class Reglas {
     }
 
     public static boolean esSimbolo(String test) {
-        Pattern pat = Pattern.compile("[.!.¡.\".#.$.&.'.(.).,..:.;.<.=.>.?.@\\[\\].^._.`.{.|.}]+"); 
+        Pattern pat = Pattern.compile("[.!.¡.\".#.$.&.'.(.).,..:.;.<.=.>.?.@\\[\\].^._.`.{.|.}]+");
         Matcher mat = pat.matcher(test);
-        
+
         boolean respuesta = mat.matches();
         if (respuesta != true) {
             Pattern pat2 = Pattern.compile("^[\\\\]+$");
@@ -48,11 +49,27 @@ public class Reglas {
             respuesta = mat2.matches();
         }
         return respuesta;
-        
+
     }
 
     public static boolean esEspacio(String test) {
         Pattern pat = Pattern.compile("^[\s]+$");
+        Matcher mat = pat.matcher(test);
+        return mat.matches();
+    }
+
+    public static boolean soloEspacio(String test) {
+        if (test.isEmpty()) {
+            return true;
+        } else {
+            Pattern pat = Pattern.compile("^[\s\t\n]+$");
+            Matcher mat = pat.matcher(test);
+            return mat.matches();
+        }
+    }
+
+    public static boolean esOperadorAritmetico(String test) {
+        Pattern pat = Pattern.compile("^([+-/*/]{1})$");
         Matcher mat = pat.matcher(test);
         return mat.matches();
     }
@@ -67,11 +84,5 @@ public class Reglas {
             respuesta = mat2.matches();
         }
         return respuesta;
-    }
-    
-    public static boolean esOperadorAritmetico(String test){
-        Pattern pat = Pattern.compile("^([+-/*/]{1})$");
-        Matcher mat=pat.matcher(test);
-        return mat.matches();
     }
 }

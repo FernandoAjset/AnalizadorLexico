@@ -2,6 +2,7 @@
 package presentacion;
 
 import domain.Analizar;
+import domain.Reglas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -43,6 +44,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        donar = new javax.swing.JMenuItem();
         about = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,6 +114,14 @@ public class InterfazOP2 extends javax.swing.JFrame {
 
         jMenu2.setText("Acerca de");
 
+        donar.setText("Donar");
+        donar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(donar);
+
         about.setText("Autores");
         about.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +140,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
 
     private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
         String Ing = Texto.getText();
-        if(Ing.equals("")){
+        if(Reglas.soloEspacio(Ing)){
             JOptionPane.showMessageDialog(rootPane,"Ingrese texto para analizar","Aviso", HEIGHT);
         }
         else{
@@ -151,6 +161,10 @@ public class InterfazOP2 extends javax.swing.JFrame {
         About nF = new About();
         nF.setVisible(true);
     }//GEN-LAST:event_aboutActionPerformed
+
+    private void donarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_donarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +210,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
     private javax.swing.JTextArea Texto;
     private javax.swing.JLabel TituloP;
     private javax.swing.JMenuItem about;
+    private javax.swing.JMenuItem donar;
     private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
