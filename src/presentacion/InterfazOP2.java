@@ -1,10 +1,14 @@
-
 package presentacion;
 
 import domain.Analizar;
 import domain.Reglas;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author briza
@@ -18,7 +22,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
         initComponents();
         jScrollPane3.setVisible(false);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,6 +119,11 @@ public class InterfazOP2 extends javax.swing.JFrame {
         jMenu2.setText("Acerca de");
 
         donar.setText("Donar");
+        donar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                donarMouseClicked(evt);
+            }
+        });
         donar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donarActionPerformed(evt);
@@ -140,13 +149,12 @@ public class InterfazOP2 extends javax.swing.JFrame {
 
     private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
         String Ing = Texto.getText();
-        if(Reglas.soloEspacio(Ing)){
-            JOptionPane.showMessageDialog(rootPane,"Ingrese texto para analizar","Aviso", HEIGHT);
-        }
-        else{
-        DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
-        modelo.setRowCount(0);
-        Analizar.separar(Ing,modelo);
+        if (Reglas.soloEspacio(Ing)) {
+            JOptionPane.showMessageDialog(rootPane, "Ingrese texto para analizar", "Aviso", HEIGHT);
+        } else {
+            DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
+            modelo.setRowCount(0);
+            Analizar.separar(Ing, modelo);
         }
     }//GEN-LAST:event_BAnalizarActionPerformed
 
@@ -163,8 +171,24 @@ public class InterfazOP2 extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutActionPerformed
 
     private void donarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donarActionPerformed
-        // TODO add your handling code here:
+        if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                try {
+                    java.net.URI uri = new java.net.URI("https://www.paypal.com/paypalme/EAjset?locale.x=es_XC");
+                    desktop.browse(uri);
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(InterfazOP2.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfazOP2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_donarActionPerformed
+
+    private void donarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donarMouseClicked
+
+    }//GEN-LAST:event_donarMouseClicked
 
     /**
      * @param args the command line arguments
