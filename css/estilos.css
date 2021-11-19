@@ -1,0 +1,98 @@
+body{
+    background: rgb(47, 74, 133);
+}
+
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.card {
+  width: 550px;
+  height: 600px;
+  background: rgb(202, 240, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(202, 240, 248, 1) 0%,
+    rgba(144, 224, 239, 1) 35%,
+    rgba(0, 180, 216, 1) 100%
+  );
+  border-radius: 20px;
+  overflow: hidden;
+  border: solid rgb(173, 232, 244);
+}
+.card img {
+  width: 100%;
+}
+
+.foto {
+  width: 30%;
+  height: 30%;
+  position: relative;
+  top: -6rem;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 0;
+  border: 7px solid rgb(2, 62, 138);
+  overflow: hidden;
+}
+
+.gt {
+  width: 100px;
+  height: 60px;
+  position: relative;
+  top: -0.5rem;
+  display: inline-block;
+  border-radius: 12%;
+  padding: 0;
+  border: 2px solid rgb(202, 240, 248);
+  overflow: hidden;
+}
+
+.user {
+  margin-top: -5rem;
+  font-size: 25px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(3, 4, 94);
+}
+
+.profesion {
+  margin-top: -1.5rem;
+  text-align: center;
+  font-family: cursive;
+  color: rgb(2, 62, 138);
+}
+
+.contacto {
+  width: 550px;
+  height: 150px;
+  background: rgb(202, 240, 248);
+  background: linear-gradient(
+    4deg,
+    rgba(202, 240, 248, 1) 0%,
+    rgba(144, 224, 239, 1) 35%,
+    rgba(0, 180, 216, 1) 100%
+  );
+  border-radius: 20px;
+  border: solid rgb(173, 232, 244);
+  text-align: center;
+}
+.contacto p {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: x-large;
+  color: #023e8a;
+}
+
+.contacto img {
+  width: 60px;
+  height: 60px;
+  top: -1rem;
+  position: relative;
+  padding: 10px;
+  display: inline-block;
+}
