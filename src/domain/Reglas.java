@@ -1,6 +1,4 @@
 package domain;
-
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,9 +9,7 @@ public class Reglas {
         "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null",
         "package", "private", "protected", "public", "return", "short", "static", "strictfp", "String", "super", "switch",
         "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while", "main"};
-
-    int a;
-
+    
     public static boolean esReservada(String test) {
         for (String recorre : reservadas) {
             if (recorre.equals(test)) {
@@ -26,15 +22,11 @@ public class Reglas {
     public static boolean esVariable(String test) {
         Pattern pat = Pattern.compile("^([a-zA-Z_]+[0-9_]*)$");
         Matcher mat = pat.matcher(test);
-        if (mat.matches()) {
-            return true;
-        } else {
-            return false;
-        }
+        return mat.matches();
     }
 
     public static boolean esMetodo(String test) {
-        Pattern pat = Pattern.compile("^([a-zA-Z_]+[0-9_]*([\\\\.][a-zA-Z_]+[0-9_]*)+)$");   // "^([a-zA-Z_]+[0-9_]*[\\.][a-zA-Z_]+[0-9_]*[\\(]{1}[\\)]{1})$"
+        Pattern pat = Pattern.compile("^([a-zA-Z_]+[0-9_]*([\\\\.][a-zA-Z_]+[0-9_]*)+)$");
         Matcher mat = pat.matcher(test);
         return mat.matches();
     }
@@ -46,8 +38,7 @@ public class Reglas {
     }
 
     public static boolean esSimbolo(String test) {
-        Pattern pat = Pattern.compile("[.!.¡.\".#.$.&.'.(.).,..:.;.<.=.>.?.@\\[\\].^._.`.{.|.}]+"); //+ - / * %
-        //"[.!.\".#.$.%.&.'.(.).*.+\\-.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]{1}"
+        Pattern pat = Pattern.compile("[.!.¡.\".#.$.&.'.(.).,..:.;.<.=.>.?.@\\[\\].^._.`.{.|.}]+"); 
         Matcher mat = pat.matcher(test);
         
         boolean respuesta = mat.matches();
@@ -84,7 +75,3 @@ public class Reglas {
         return mat.matches();
     }
 }
-/*ASDFASDFSADASDFSAD!**8784641212F1215151*/
-//^([./]{1}[.*]{1})([a-zA-Z0-9]*[.!.\".#.$.%.&.'.(.).*.+.,.-/../.:.;.<.=.>.?.@.[.].^._.`.{.|.}]*)([.*]{1}[./]{1})$
-/*ASDF1515!!"@+SADF145*!3@?-*/
- /*ASDF1515!!"@+SADF145*!3@?-AS-5*/

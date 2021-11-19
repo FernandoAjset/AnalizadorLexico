@@ -1,22 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package presentacion;
 
 import domain.Analizar;
-import static domain.Analizar.identificar;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.StringTokenizer;
-import java.util.Vector;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
-import presentacion.*;
-
 /**
  *
  * @author briza
@@ -29,15 +14,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
     public InterfazOP2() {
         initComponents();
     }
-
-//    public void cargar(String cadena) {
-//        DefaultTableModel modelo = (DefaultTableModel) TEjecucion.getModel();
-//        Object[] fila = new Object[2];
-//        String resultado = new String();
-//        
-//        ArrayList <String> parts;
-//
-//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
