@@ -2,6 +2,7 @@
 package presentacion;
 
 import domain.Analizar;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author briza
@@ -13,6 +14,7 @@ public class InterfazOP2 extends javax.swing.JFrame {
      */
     public InterfazOP2() {
         initComponents();
+        jScrollPane3.setVisible(false);
     }
     
     /**
@@ -31,6 +33,8 @@ public class InterfazOP2 extends javax.swing.JFrame {
         BAnalizar = new javax.swing.JButton();
         BLimpiar = new javax.swing.JButton();
         Resultado = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaResultados = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         Respuesta = new javax.swing.JTextArea();
         img = new javax.swing.JLabel();
@@ -77,6 +81,18 @@ public class InterfazOP2 extends javax.swing.JFrame {
         Resultado.setText("Resultados de la ejecucion:");
         getContentPane().add(Resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
+        tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Palabra", "Resultado"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaResultados);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 317, 480, 230));
+
         Respuesta.setColumns(20);
         Respuesta.setForeground(new java.awt.Color(0, 0, 205));
         Respuesta.setRows(5);
@@ -113,16 +129,16 @@ public class InterfazOP2 extends javax.swing.JFrame {
 
     private void BAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAnalizarActionPerformed
         String Ing = Texto.getText();
-        String Res = Analizar.separar(Ing);
-
-        Respuesta.setText(Res);
-
+        DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
+        modelo.setRowCount(0);
+        Analizar.separar(Ing,modelo);
     }//GEN-LAST:event_BAnalizarActionPerformed
 
     private void BLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLimpiarActionPerformed
         Texto.setText("");
         Respuesta.setText("");
-
+        DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
+        modelo.setRowCount(0);
     }//GEN-LAST:event_BLimpiarActionPerformed
 
     private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
@@ -180,7 +196,9 @@ public class InterfazOP2 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablaResultados;
     // End of variables declaration//GEN-END:variables
 }

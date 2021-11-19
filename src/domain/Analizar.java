@@ -1,36 +1,24 @@
 package domain;
 
 import java.util.StringTokenizer;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 public class Analizar {
 
-    public static String separar(String cadena) {
-        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,|<|>", true);
-        String resultado = new String();
-        while (st.hasMoreTokens()) {
-            String imprimir = identificar(st.nextToken());
+    private static String palabra = new String();
 
+    public static void separar(String cadena, DefaultTableModel modelo) {
+        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,|<|>", true);
+        while (st.hasMoreTokens()) {
+            Vector v = new Vector();
+            String imprimir = identificar(st.nextToken());
             if (imprimir != null) {
-                //System.out.println(imprimir);
-                resultado += imprimir + "\n";
+                v.add(palabra);
+                v.add(imprimir);
+                modelo.addRow(v);
             }
         }
-        return resultado;
-    }
-
-    public static String separar(String cadena, DefaultTableModel modelo) {
-        StringTokenizer st = new StringTokenizer(cadena, "\s | \n | \t | \" |\\( | \\) | \\{ | \\} | \\[ | \\] | + | - | * | / | = | ; | ' | : | ,|<|>", true);
-        String resultado = new String();
-        while (st.hasMoreTokens()) {
-            String imprimir = identificar(st.nextToken());
-
-            if (imprimir != null) {
-                //System.out.println(imprimir);
-                resultado += imprimir + "\n";
-            }
-        }
-        return resultado;
     }
 
     public static String identificar(String parte) {
@@ -39,19 +27,23 @@ public class Analizar {
         var respuesta = new String();
 
         if (Reglas.esReservada(parte)) {
-            respuesta = parte + "   -->Palabra Reservada";
+            respuesta = "Palabra Reservada";
+            palabra = parte;
             return respuesta;
         }
         if (Reglas.esVariable(parte)) {
-            respuesta = parte + "   --> Palabra/Variable";
+            respuesta = "Palabra/Variable";
+            palabra = parte;
             return respuesta;
         }
         if (Reglas.esMetodo(parte)) {
-            respuesta = parte + "   --> Metodo";
+            respuesta = "Metodo";
+            palabra = parte;
             return respuesta;
         }
         if (Reglas.esNumero(parte)) {
-            respuesta = parte + "   --> Numero";
+            respuesta = "Numero";
+            palabra = parte;
             return respuesta;
         }
         if (Reglas.esEspacio(parte)) {
@@ -60,14 +52,17 @@ public class Analizar {
         }
 
         if (Reglas.esSimbolo(parte)) {
-            respuesta = parte + "   --> Caracter especial";
+            respuesta = "Caracter especial";
+            palabra = parte;
             return respuesta;
         }
         if (Reglas.esOperadorAritmetico(parte)) {
-            respuesta = parte + "   --> Operador Aritmético";
+            respuesta = "Operador Aritmético";
+            palabra = parte;
             return respuesta;
         } else {
-            respuesta = parte + "   --> No es valido";
+            respuesta = "No es valido";
+            palabra = parte;
             return respuesta;
         }
     }
