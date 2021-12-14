@@ -13,8 +13,10 @@ Este proyecto fue realizado con lenguaje Java y está diseñado para analizar c�
 
 La lógica utilizada fue la aplicación de expresiones regulares para identificar palabras validas y lograr su descripción, así como la verificación de las posibles palabas a tomar en cuenta.
 
+### **REQUISITOS**
 ------------
-
+Este proyecto fue realizado utilizando OpenJDK 17.0.1_12, utilice la misma version o superior para evitar problemas de compilación.
+Tambien puede optar por realizar un Downgrade si fuera necesario, tomando en cuenta que quiza necesite realizar cambios al codigo para su correcto funcionamiento.
 
 ### **Donaciones**
 
